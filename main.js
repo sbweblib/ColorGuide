@@ -14,7 +14,11 @@
         b:0
     };
     var n;
-   
+
+    function hexs(col){
+        return '#'+col.match(/\d+/g).map(function(a){return ("0"+parseInt(a).toString(16)).slice(-2)}).join("");
+    }
+    
     function change(v,type){
         if(type=="red"){
             bodyset.style.backgroundColor='rgb('+v+','+color['g']+','+color['b']+')';
@@ -24,8 +28,9 @@
             bodyset.style.backgroundColor='rgb('+color['r']+','+v+','+color['b']+')';
         }
 
-      hex.textContent=hexs([color['r'],color['g'],color['b']]);
+      hex.textContent=hexs('rgb('+color['r']+','+color['g']+','+color['b']+')');
     }
+
     red.addEventListener('input',e=>{
        console.log(red.value);
        redp=red.value / 255 * 100;
